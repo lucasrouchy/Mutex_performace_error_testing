@@ -1,4 +1,22 @@
 # Mutex Performance Error Testing
+## Introduction 
+
+This project explores the performance and behavior of multi-threaded code with and without the use of mutexes to handle critical sections and race conditions. The primary goal is to assess the impact of mutex usage on error rates and execution time, with a focus on varying the parameter NUMN.
+
+## Device Information
+
+- Device: M2 Pro Mac Mini
+- CPU: 10 core CPU
+- GPU: 19 core GPU
+- OS: Ventura 13.3.1
+- Compiler: GCC++ version 12
+
+### Key Findings
+
+- The use of mutexes significantly reduces the error rate in the program.
+- For a lower value of NUMN (e.g., 1024), there is a chance of achieving a trial with no errors when mutexes are not used, although this is rare.
+- As the value of NUMN increases, the probability of achieving error-free trials without mutexes drastically decreases.
+- There is a notable difference in execution time between trials using mutexes and those that do not. Mutex-free executions are faster, as they do not incur the overhead of locking and unlocking.
 
 ## Results
 
@@ -30,23 +48,3 @@
 | 32768 | false     | 12223        | 37.30%           | 348.00 microseconds |
 
 For more data, refer to the included CSV file.
-
-## Device Information
-
-- Device: M2 Pro Mac Mini
-- CPU: 10 core CPU
-- GPU: 19 core GPU
-- OS: Ventura 13.3.1
-- Compiler: GCC++ version 12
-
-## Project Description
-
-This project explores the performance and behavior of multi-threaded code with and without the use of mutexes to handle critical sections and race conditions. The primary goal is to assess the impact of mutex usage on error rates and execution time, with a focus on varying the parameter NUMN.
-
-### Key Findings
-
-- The use of mutexes significantly reduces the error rate in the program.
-- For a lower value of NUMN (e.g., 1024), there is a chance of achieving a trial with no errors when mutexes are not used, although this is rare.
-- As the value of NUMN increases, the probability of achieving error-free trials without mutexes drastically decreases.
-- There is a notable difference in execution time between trials using mutexes and those that do not. Mutex-free executions are faster, as they do not incur the overhead of locking and unlocking.
-
